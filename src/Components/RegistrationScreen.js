@@ -1,53 +1,33 @@
 import React, { useState } from 'react';
-import {  TextInput, Button, Alert, StyleSheet, ImageBackground } from 'react-native';
+import { TextInput, Button, StyleSheet, ImageBackground, ActivityIndicator, Text, Alert } from 'react-native';
 
-const RegistrationScreen = ({ navigation }) => {
+import { auth } from './firebase';
+
+const RegistrationScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleRegistration = () => {
-    // Perform validation checks
-    if (email.trim() === '' || password.trim() === '') {
-      Alert.alert('Validation Error', 'Please fill in all fields');
+  const handleSignUP = () => {
+    if (!email || !password) {
+      setError('Please enter both email and password.');
       return;
     }
 
-    const checkEmailAvailability = (email) => {
-      // Simulate email availability check (I just used dummy data, no API calls)
-      const registeredEmails = [
-        'Richardasante263@gmail.com',
-        'Richardasante765@gmail.com',
-        'Richardasante000@gmail.com',
-      ];
-      return !registeredEmails.includes(email);
-    };
+    setIsLoading(true);
 
-    // Simulate the registration process (replace with your actual implementation)
-    const simulateRegistration = () => {
-      return new Promise((resolve, reject) => {
-        // Simulate a delay to mimic an API call
-        setTimeout(() => {
-          const isEmailAvailable = checkEmailAvailability(email);
-          if (isEmailAvailable) {
-            // Registration successful
-            resolve();
-          } else {
-            // Email already exists
-            reject('Email already exists');
-          }
-        }, 2000);
-      });
-    };
-
-    // Simulate the registration process
-    simulateRegistration()
+    auth
+      .createUserWithEmailAndPassword(email, password)
       .then(() => {
-        Alert.alert('Registration Successful', 'You have successfully registered');
-        // Navigate to the Home page after registration
-        navigation.navigate('HomePage');
+        setIsLoading(false);
+
+        // Show a success alert to the user
+        Alert.alert('Registration Successful', 'You have successfully created an account');
       })
-      .catch((error) => {
-        Alert.alert('Registration Failed', error);
+      .catch(error => {
+        setError(error.message);
+        setIsLoading(false);
       });
   };
 
@@ -68,7 +48,10 @@ const RegistrationScreen = ({ navigation }) => {
         onChangeText={setPassword}
         secureTextEntry
       />
-      <Button title="Register" onPress={handleRegistration} />
+      <Button title="Register" onPress={handleSignUP} />
+
+      {isLoading && <ActivityIndicator />}
+      {error ? <Text style={styles.errorText}>{error}</Text> : null}
     </ImageBackground>
   );
 };
@@ -90,6 +73,10 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginBottom: 10,
     paddingHorizontal: 10,
+  },
+  errorText: {
+    color: 'red',
+    marginTop: 10,
   },
 });
 

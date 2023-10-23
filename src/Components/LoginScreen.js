@@ -1,6 +1,7 @@
 //import necessary dependencies
 import React, { useState } from 'react';
 import { TextInput, Button, Alert, Text, StyleSheet, ImageBackground } from 'react-native';
+import { auth } from './firebase';
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -14,40 +15,34 @@ const LoginScreen = ({ navigation }) => {
     }
 
     // Validate the login credentials
-    const loginSuccessful = validateLoginCredentials(email, password);
-
-    if (loginSuccessful) {
-      // Login successful
+    auth
+    .signInWithEmailAndPassword(email, password)
+    .then (() =>
+    {
+      //login successful
       Alert.alert('Login Successful', 'You have successfully logged in');
       // Navigate to the Home screen after successful login
       navigation.navigate('Home');
-    } else {
-      // Invalid credentials
-      Alert.alert('Login Failed', 'Invalid email or password');
+
     }
+    )
+    .catch(error =>{
+      Alert.alert('Login Failed', 'Invalid email or password');
+    });
+      
   };
 
+  
   const handleCreateAccount = () => {
     // Navigate to the RegistrationScreen
     navigation.navigate('RegistrationScreen');
   };
 
-  // Validate login credentials with dummy data
- const validateLoginCredentials = (email, password) => {
-    // These are just my dummy data
-    const credentials = {
-      'Richardasante263@gmail.com': 'password1',
-      'Richardasante765@gmail.com': 'password2',
-      'Richardasante000@gmail.com': 'password3',
-    };
 
-    // Check if email exists in dummy data and the password matches
-    return credentials[email] === password;
-  };
-
+  //JSX, returning values of the defined functions
   return (
     <ImageBackground source={require('../../assets/PASS.jpg')} style={styles.container}>
-      <Text style={styles.title}>EarthX</Text>
+      <Text style={styles.title}>SafeTravel</Text>
       <TextInput
         style={styles.input}
         placeholder="Email"
@@ -69,6 +64,7 @@ const LoginScreen = ({ navigation }) => {
   );
 };
 
+//styling
 const styles = StyleSheet.create({
   container: {
     flex: 1,

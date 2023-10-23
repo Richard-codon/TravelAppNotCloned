@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         padding: 10,
         marginBottom: 10,
+        borderRadius:5,
     },
 });
 //exporting to the explore screen 
