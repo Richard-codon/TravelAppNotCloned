@@ -6,12 +6,12 @@ import { View, Text, StyleSheet, ImageBackground, TouchableOpacity } from 'react
 //Function to control homepage and explore screen navigation
 const HomePage = ({ navigation }) => {
   const handleExplore = () => {
-    // Navigate to the Explore screen
+    // Navigate to the Explore screen after pressing the explore button
     navigation.navigate('Explore');
   };
 
   
-//the function returning values
+//the function returning the values
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -20,7 +20,7 @@ const HomePage = ({ navigation }) => {
       >
         <View style={styles.overlay} />
 
-        <Text style={styles.title}>Travel with EarthX</Text>
+        <Text style={styles.title}>Are you ready to travel with EarthX?</Text>
 
         <TouchableOpacity style={styles.button} onPress={handleExplore}>
           <Text style={styles.buttonText}>Explore</Text>
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255, 255, 255, 0.3)',
     paddingVertical: 10,
     paddingHorizontal: 20,
-    borderRadius: 8,
+    borderRadius: 9,
     marginBottom: 20,
   },
   buttonText: {

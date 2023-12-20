@@ -1,29 +1,36 @@
-//import necessary dependencies for the development
+//import the necessary dependencies
 import React from 'react';
-import { TextInput, StyleSheet} from "react-native";
-
-//function for the search bar(with parameters, placeHolder and onChangeText)
-const SearchBar = ({placeholder, onChangeText}) => {
-    //passing argument to the parameter (placeHolder and onChangeText)
-    return (
-        <TextInput
-            style={styles.input}
-            placeholder={placeholder}
-            onChangeText={onChangeText}
-        />
-    );
+import { TextInput, StyleSheet, View } from 'react-native';
+// function for the search bar component
+const SearchBar = ({ placeholder, onChangeText }) => {
+  return (
+    <TextInput
+      style={styles.input}
+      placeholder={placeholder}
+      onChangeText={onChangeText}
+      caretHiddenComponent={
+        <View style={styles.cursor}></View>
+      }
+      selectionColor="black" // the color of the cursor
+    />
+  );
 };
 
-//styles for the passed props
+//styling for the props
 const styles = StyleSheet.create({
-    input: {
-        height: 40,
-        borderColor: 'gray',
-        borderWidth: 1,
-        padding: 10,
-        marginBottom: 10,
-        borderRadius:5,
-    },
+  input: {
+    height: 40,
+    borderColor: 'black',
+    borderWidth: 1,
+    padding: 10,
+    marginBottom: 10,
+    borderRadius: 5,
+    backgroundColor:'white'
+  },
+  cursor: {
+    width: 1, 
+    backgroundColor: 'black',
+  },
 });
-//exporting to the explore screen 
+//export to the explore screen
 export default SearchBar;

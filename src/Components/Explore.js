@@ -150,8 +150,8 @@ const Explore = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
-    padding: 10,
+    backgroundColor: 'gray',
+    padding: 30,
   },
   noResultsText: {
     alignSelf: 'center',
@@ -160,5 +160,6 @@ const styles = StyleSheet.create({
     color: 'gray',
   },
 });
+
 
 export default Explore;

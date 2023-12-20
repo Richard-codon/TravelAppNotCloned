@@ -17,19 +17,24 @@ const App = () => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: '#f4511e', // Set the background color of the header
+          },
+          headerTintColor: '#fff', // Set the color of the back navigation sign and header title text
+        }}
+      >
         <Stack.Screen name="LoginScreen" component={LoginScreen} options={{ headerShown: false, deviceName }} />
         <Stack.Screen name="Home" component={HomePage} options={{ headerShown: false, deviceName }}/>
-        <Stack.Screen name="Explore" component={Explore}/>
-        <Stack.Screen name="DestinationDetails" component={DestinationDetails}/>
-        <Stack.Screen name="Booking" component={Booking}/>
+        <Stack.Screen name="Explore" component={Explore} />
+        <Stack.Screen name="DestinationDetails" component={DestinationDetails} />
+        <Stack.Screen name="Booking" component={Booking} />
         <Stack.Screen
           name="RegistrationScreen"
           component={RegistrationScreen}
           options={{
             headerTitle: 'Create an Account',
-            headerStyle: { backgroundColor: '#f4511e' },
-            headerTintColor: '#fff',
           }}
         />
       </Stack.Navigator>
