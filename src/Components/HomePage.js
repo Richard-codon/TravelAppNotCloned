@@ -6,8 +6,8 @@ import { View, Text, StyleSheet, ImageBackground, TouchableOpacity } from 'react
 //Function to control homepage and explore screen navigation
 const HomePage = ({ navigation }) => {
   const handleExplore = () => {
-    // Navigate to the Explore screen after pressing the explore button
-    navigation.navigate('Explore');
+    //function to handle an explore button such that after pressing, it navigates to the explore screen
+    navigation.navigate('Explore')
   };
 
   

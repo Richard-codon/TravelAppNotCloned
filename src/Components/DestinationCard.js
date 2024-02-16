@@ -24,6 +24,16 @@ const DestinationCard = ({ destination }) => {
   );
 };
 
+
+
+
+
+
+
+
+
+
+
 //creating styles for each prop
 const styles = StyleSheet.create({
   cardContainer: {
@@ -38,6 +48,9 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
+
+
+
     height: 200,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,

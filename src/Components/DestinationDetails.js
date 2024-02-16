@@ -2,7 +2,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Button, Image, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import DestinationCard from './Card';
+import DestinationCard from './DestinationCard';
 import HotelData from './HotelData';
 
 //function to handle the destination details with navigations between the page,bookingpage,and back to explore page

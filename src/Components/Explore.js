@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginVertical: 20,
     fontSize: 16,
-    color: 'gray',
+    color: 'black',
   },
 });
 
