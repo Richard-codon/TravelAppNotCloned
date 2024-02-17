@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TextInput, Button, StyleSheet, ImageBackground, ActivityIndicator, Text, Alert } from 'react-native';
 
 import { auth } from './firebase';
+import { FIREBASE_API_KEY } from '@env';
 
 const RegistrationScreen = () => {
   const [email, setEmail] = useState('');
@@ -30,6 +31,11 @@ const RegistrationScreen = () => {
         setIsLoading(false);
       });
   };
+
+  useEffect(() => {
+    // Log the Firebase API key for testing
+    console.log('Firebase API Key:', FIREBASE_API_KEY);
+  }, []);
 
   return (
     <ImageBackground source={require('../../assets/Password.jpg')} style={styles.container}>

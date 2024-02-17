@@ -16,6 +16,8 @@ import { Text,TouchableOpacity, StyleSheet} from 'react-native';
 const Stack = createStackNavigator();
 
 const App = () => {
+
+  const apiKey = process.env.FIREBASE_APP_API_KEY;
   const deviceName = Constants.deviceName;
 
   return (

@@ -1,10 +1,8 @@
-
 import * as firebase from "firebase/compat";
-
 import { FIREBASE_API_KEY } from '@env';
 
 const firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY,
+  apiKey: FIREBASE_API_KEY,
   authDomain: "fir-auth-74f77.firebaseapp.com",
   projectId: "fir-auth-74f77",
   storageBucket: "fir-auth-74f77.appspot.com",
@@ -23,4 +21,4 @@ else{
 
 const auth = firebase.auth()
 
-export {auth};
+export { auth };
