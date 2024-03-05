@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {View, Button, StyleSheet, Alert, Text} from 'react-native';
 import {auth} from './firebase';
-import LoginScreen from './LoginScreen';
+
 
 //function for user profile
 const UserProfile = ({navigation, route}) => {
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
         alignItems:'center',
     },
     emailText:{
-        fontSize:15,
+        fontSize:16,
         fontWeight:'bold',
     },
 });
